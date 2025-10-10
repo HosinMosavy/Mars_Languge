@@ -16,7 +16,7 @@ namespace Mars_Languge
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Mars_Languge.Main.Forms.frm_Writing_code_for_run());
         }
     }
 }
