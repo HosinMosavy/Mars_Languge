@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main\Class_dll\Lexer.cs" />
+    <Compile Include="Main\Class_dll\Parser.cs" />
     <Compile Include="Main\Forms\frm_Writing_code_for_run.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -81,7 +82,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Main\Compoiler\" />
     <Folder Include="Main\Data\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

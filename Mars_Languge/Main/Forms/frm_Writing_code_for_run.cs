@@ -26,7 +26,7 @@ namespace Mars_Languge.Main.Forms
                 txtOutput.Clear();
                 foreach (var token in tokens)
                 {
-                    txtOutput.AppendText(token.ToString() + Environment.NewLine);
+                    txt_lexser.AppendText(token.ToString() + Environment.NewLine);
                 }
             }
             catch (Exception ex)

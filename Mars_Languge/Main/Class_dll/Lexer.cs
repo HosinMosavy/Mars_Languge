@@ -1,17 +1,19 @@
-﻿using System;
+﻿using Mars_Languge.Main.Forms;
+using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 namespace Mars_Languge.Main.Class_dll
 {
     internal class Lexer
     {
+        
         public class Token
         {
             public string Type { get; set; }
             public string Value { get; set; }
             public override string ToString() => $"{Type}: {Value}";
         }
-
+        
         // Lexer برای تحلیل متن و تولید توکن‌ها
         public class Lexer1
         {
@@ -52,9 +54,13 @@ namespace Mars_Languge.Main.Class_dll
                             break;
                         }
                     }
-
+                    
                     if (!matched)
+                    {
                         throw new Exception($"Unexpected character: {_input[index]} at position {index}");
+
+                    }
+                       
                 }
 
                 return tokens;
