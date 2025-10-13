@@ -47,8 +47,19 @@
             this.lbl_time = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.radSplitButton1 = new Telerik.WinControls.UI.RadSplitButton();
+            this.btn_open = new Telerik.WinControls.UI.RadMenuItem();
+            this.btn_save = new Telerik.WinControls.UI.RadMenuItem();
+            this.btn_save_as = new Telerik.WinControls.UI.RadMenuItem();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.pnl_conntrol_box.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.radSplitButton1)).BeginInit();
+            this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCode
@@ -56,32 +67,35 @@
             this.txtCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCode.ForeColor = System.Drawing.Color.White;
-            this.txtCode.Location = new System.Drawing.Point(24, 154);
+            this.txtCode.Location = new System.Drawing.Point(12, 23);
             this.txtCode.Multiline = true;
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(440, 269);
             this.txtCode.TabIndex = 0;
+            this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Segoe UI Variable Display", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(21, 134);
+            this.label1.Location = new System.Drawing.Point(12, 3);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 17);
+            this.label1.Size = new System.Drawing.Size(80, 19);
             this.label1.TabIndex = 1;
-            this.label1.Text = "input code :";
+            this.label1.Text = "input code";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnRun
             // 
-            this.btnRun.BackColor = System.Drawing.Color.Silver;
+            this.btnRun.BackColor = System.Drawing.Color.Black;
+            this.btnRun.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRun.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRun.Location = new System.Drawing.Point(504, 180);
+            this.btnRun.Image = ((System.Drawing.Image)(resources.GetObject("btnRun.Image")));
+            this.btnRun.Location = new System.Drawing.Point(806, 3);
             this.btnRun.Name = "btnRun";
-            this.btnRun.Size = new System.Drawing.Size(75, 269);
+            this.btnRun.Size = new System.Drawing.Size(47, 45);
             this.btnRun.TabIndex = 2;
-            this.btnRun.Text = "Run";
             this.btnRun.UseVisualStyleBackColor = false;
             this.btnRun.Click += new System.EventHandler(this.btnRun_Click);
             // 
@@ -89,7 +103,7 @@
             // 
             this.txtOutput.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtOutput.ForeColor = System.Drawing.Color.White;
-            this.txtOutput.Location = new System.Drawing.Point(24, 452);
+            this.txtOutput.Location = new System.Drawing.Point(10, 29);
             this.txtOutput.Name = "txtOutput";
             this.txtOutput.Size = new System.Drawing.Size(440, 220);
             this.txtOutput.TabIndex = 3;
@@ -98,31 +112,34 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Segoe UI Variable Display", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(21, 432);
+            this.label2.Location = new System.Drawing.Point(10, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 17);
+            this.label2.Size = new System.Drawing.Size(57, 19);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Output :";
+            this.label2.Text = "Output";
             // 
             // txt_lexser
             // 
             this.txt_lexser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txt_lexser.ForeColor = System.Drawing.Color.White;
-            this.txt_lexser.Location = new System.Drawing.Point(836, 629);
+            this.txt_lexser.Location = new System.Drawing.Point(625, 534);
             this.txt_lexser.Name = "txt_lexser";
             this.txt_lexser.Size = new System.Drawing.Size(190, 103);
             this.txt_lexser.TabIndex = 5;
             this.txt_lexser.Text = "";
+            this.txt_lexser.Visible = false;
             // 
             // txtError
             // 
             this.txtError.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtError.ForeColor = System.Drawing.Color.White;
-            this.txtError.Location = new System.Drawing.Point(622, 194);
+            this.txtError.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtError.ForeColor = System.Drawing.Color.LightCoral;
+            this.txtError.Location = new System.Drawing.Point(478, 145);
             this.txtError.Name = "txtError";
-            this.txtError.Size = new System.Drawing.Size(190, 509);
+            this.txtError.ReadOnly = true;
+            this.txtError.Size = new System.Drawing.Size(370, 290);
             this.txtError.TabIndex = 6;
             this.txtError.Text = "";
             // 
@@ -131,22 +148,23 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(833, 609);
+            this.label3.Location = new System.Drawing.Point(622, 514);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 17);
             this.label3.TabIndex = 7;
             this.label3.Text = "Lexer :";
+            this.label3.Visible = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Segoe UI Variable Display", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(619, 174);
+            this.label4.Location = new System.Drawing.Point(477, 122);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 17);
+            this.label4.Size = new System.Drawing.Size(63, 17);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Error List :";
+            this.label4.Text = "Error List";
             // 
             // pnl_conntrol_box
             // 
@@ -160,24 +178,24 @@
             this.pnl_conntrol_box.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_conntrol_box.Location = new System.Drawing.Point(0, 0);
             this.pnl_conntrol_box.Name = "pnl_conntrol_box";
-            this.pnl_conntrol_box.Size = new System.Drawing.Size(1080, 42);
+            this.pnl_conntrol_box.Size = new System.Drawing.Size(860, 42);
             this.pnl_conntrol_box.TabIndex = 9;
             this.pnl_conntrol_box.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Tai Le", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Calibri", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(19, 10);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(140, 23);
+            this.label5.Size = new System.Drawing.Size(125, 22);
             this.label5.TabIndex = 2;
             this.label5.Text = "Mars Language";
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Mars_Languge.Properties.Resources.Mars;
-            this.pictureBox1.Location = new System.Drawing.Point(162, 5);
+            this.pictureBox1.Location = new System.Drawing.Point(150, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(38, 33);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -190,7 +208,7 @@
             this.btn_Minimize.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_Minimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Minimize.ForeColor = System.Drawing.Color.Gray;
-            this.btn_Minimize.Location = new System.Drawing.Point(983, 4);
+            this.btn_Minimize.Location = new System.Drawing.Point(765, 4);
             this.btn_Minimize.Name = "btn_Minimize";
             this.btn_Minimize.Size = new System.Drawing.Size(43, 35);
             this.btn_Minimize.TabIndex = 1;
@@ -203,7 +221,7 @@
             this.btn_close.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_close.ForeColor = System.Drawing.Color.Gray;
-            this.btn_close.Location = new System.Drawing.Point(1032, 4);
+            this.btn_close.Location = new System.Drawing.Point(814, 4);
             this.btn_close.Name = "btn_close";
             this.btn_close.Size = new System.Drawing.Size(43, 35);
             this.btn_close.TabIndex = 0;
@@ -213,53 +231,118 @@
             // lbl_time
             // 
             this.lbl_time.AutoSize = true;
-            this.lbl_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_time.Location = new System.Drawing.Point(549, 10);
+            this.lbl_time.Font = new System.Drawing.Font("Consolas", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_time.Location = new System.Drawing.Point(434, 10);
             this.lbl_time.Name = "lbl_time";
-            this.lbl_time.Size = new System.Drawing.Size(54, 20);
+            this.lbl_time.Size = new System.Drawing.Size(60, 22);
             this.lbl_time.TabIndex = 4;
             this.lbl_time.Text = "00:00";
+            this.lbl_time.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(477, 10);
+            this.label6.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(366, 11);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 20);
+            this.label6.Size = new System.Drawing.Size(62, 21);
             this.label6.TabIndex = 5;
             this.label6.Text = "Timer :";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // timer1
             // 
             this.timer1.Interval = 1000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
+            // panel1
+            // 
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panel1.Controls.Add(this.radSplitButton1);
+            this.panel1.Controls.Add(this.btnRun);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 42);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(860, 55);
+            this.panel1.TabIndex = 10;
+            // 
+            // radSplitButton1
+            // 
+            this.radSplitButton1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.radSplitButton1.Items.AddRange(new Telerik.WinControls.RadItem[] {
+            this.btn_open,
+            this.btn_save,
+            this.btn_save_as});
+            this.radSplitButton1.Location = new System.Drawing.Point(10, 13);
+            this.radSplitButton1.Name = "radSplitButton1";
+            this.radSplitButton1.Size = new System.Drawing.Size(68, 24);
+            this.radSplitButton1.TabIndex = 3;
+            this.radSplitButton1.Text = "File";
+            this.radSplitButton1.ThemeName = "Fluent";
+            // 
+            // btn_open
+            // 
+            this.btn_open.Name = "btn_open";
+            this.btn_open.Text = "Open";
+            // 
+            // btn_save
+            // 
+            this.btn_save.Name = "btn_save";
+            this.btn_save.Text = "Save";
+            // 
+            // btn_save_as
+            // 
+            this.btn_save_as.Name = "btn_save_as";
+            this.btn_save_as.Text = "Save As";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.txtOutput);
+            this.panel2.Location = new System.Drawing.Point(11, 423);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(461, 259);
+            this.panel2.TabIndex = 11;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.label1);
+            this.panel3.Controls.Add(this.txtCode);
+            this.panel3.Location = new System.Drawing.Point(7, 122);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(464, 295);
+            this.panel3.TabIndex = 12;
+            // 
             // frm_Writing_code_for_run
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1080, 754);
+            this.ClientSize = new System.Drawing.Size(860, 700);
             this.ControlBox = false;
+            this.Controls.Add(this.panel3);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnl_conntrol_box);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtError);
             this.Controls.Add(this.txt_lexser);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtOutput);
-            this.Controls.Add(this.btnRun);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtCode);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Name = "frm_Writing_code_for_run";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.frm_Writing_code_for_run_Load);
             this.pnl_conntrol_box.ResumeLayout(false);
             this.pnl_conntrol_box.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.radSplitButton1)).EndInit();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,5 +367,12 @@
         private System.Windows.Forms.Label lbl_time;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Panel panel1;
+        private Telerik.WinControls.UI.RadSplitButton radSplitButton1;
+        private Telerik.WinControls.UI.RadMenuItem btn_open;
+        private Telerik.WinControls.UI.RadMenuItem btn_save;
+        private Telerik.WinControls.UI.RadMenuItem btn_save_as;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
     }
 }

@@ -101,6 +101,16 @@ namespace Mars_Languge.Main.Forms
             lbl_time.Text = time.ToString(@"hh\:mm\:ss");
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCode_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
         //------------------------------------------------------------------------------------
     }
