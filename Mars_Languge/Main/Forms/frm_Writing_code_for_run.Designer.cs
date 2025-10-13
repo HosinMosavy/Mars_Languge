@@ -170,9 +170,9 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Tai Le", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(19, 10);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 23);
+            this.label5.Size = new System.Drawing.Size(140, 23);
             this.label5.TabIndex = 2;
-            this.label5.Text = "Mars Languge";
+            this.label5.Text = "Mars Language";
             // 
             // pictureBox1
             // 
