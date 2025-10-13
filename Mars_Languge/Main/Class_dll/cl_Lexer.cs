@@ -1,20 +1,18 @@
-﻿using Mars_Languge.Main.Forms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-namespace Mars_Languge.Main.Class_dll
+
+namespace Mars_Language.Main.Class_dll
 {
-    internal class Lexer
+    internal class cl_Lexer
     {
-        
         public class Token
         {
             public string Type { get; set; }
             public string Value { get; set; }
             public override string ToString() => $"{Type}: {Value}";
         }
-        
-        // Lexer برای تحلیل متن و تولید توکن‌ها
+
         public class Lexer1
         {
             private string _input;
@@ -24,16 +22,16 @@ namespace Mars_Languge.Main.Class_dll
             {
                 var tokens = new List<Token>();
 
-                var rules = new Dictionary<string, string>
+                var rules = new List<KeyValuePair<string, string>>
                 {
-                    { "Type", @"\b(int|string|float|bool)\b" },
-                    { "Identifier", @"[a-zA-Z_]\w*" },
-                    { "Number", @"\b\d+(\.\d+)?\b" },
-                    { "String", "\".*?\"" },
-                    { "Operator", @"[=+\-*/]" },
-                    { "Keyword", @"\b(print)\b" },
-                    { "Symbol", @"[;]" },
-                    { "Whitespace", @"\s+" }
+                    new KeyValuePair<string, string>("Type", @"\b(int|string|float|bool)\b"),
+                    new KeyValuePair<string, string>("Keyword", @"\b(print)\b"),
+                    new KeyValuePair<string, string>("Identifier", @"[a-zA-Z_]\w*"),
+                    new KeyValuePair<string, string>("Number", @"\b\d+(\.\d+)?\b"),
+                    new KeyValuePair<string, string>("String", "\".*?\""),
+                    new KeyValuePair<string, string>("Operator", @"[=+\-*/]"),
+                    new KeyValuePair<string, string>("Symbol", @"[;]"),
+                    new KeyValuePair<string, string>("Whitespace", @"\s+")
                 };
 
                 int index = 0;
@@ -54,13 +52,9 @@ namespace Mars_Languge.Main.Class_dll
                             break;
                         }
                     }
-                    
-                    if (!matched)
-                    {
-                        throw new Exception($"Unexpected character: {_input[index]} at position {index}");
 
-                    }
-                       
+                    if (!matched)
+                        throw new Exception($"Unexpected character: '{_input[index]}' at position {index}");
                 }
 
                 return tokens;

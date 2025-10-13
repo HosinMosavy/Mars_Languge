@@ -1,19 +1,20 @@
-﻿using Mars_Languge.Main.Class_dll;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Windows.Forms;
 
 namespace Mars_Language.Main.Class_dll
 {
-    internal class Parser
+    internal class cl_Parser
     {
-        private List<Lexer.Token> _tokens;
+        private List<cl_Lexer.Token> _tokens;
         private int _position = 0;
         private Dictionary<string, object> _variables = new Dictionary<string, object>();
+        private RichTextBox _outputBox;
 
-        public Parser(List<Lexer.Token> tokens)
+        public cl_Parser(List<cl_Lexer.Token> tokens, RichTextBox outputBox = null)
         {
             _tokens = tokens;
+            _outputBox = outputBox;
         }
 
         public void Parse()
@@ -24,12 +25,10 @@ namespace Mars_Language.Main.Class_dll
 
                 if (current.Type == "Type")
                     ParseVariableDeclaration();
-
                 else if (current.Type == "Keyword" && current.Value == "print")
                     ParsePrintStatement();
-
                 else
-                    throw new Exception($"Unexpected token {current.Value} at position {_position}");
+                    throw new Exception($"Unexpected token '{current.Value}' at position {_position}");
             }
         }
 
@@ -69,16 +68,22 @@ namespace Mars_Language.Main.Class_dll
             if (!_variables.ContainsKey(varName))
                 throw new Exception($"Undefined variable: {varName}");
 
-            Console.WriteLine(_variables[varName]);
+            var value = _variables[varName];
+
+            // چاپ در RichTextBox
+            _outputBox?.AppendText(value + Environment.NewLine);
 
             Expect("Symbol", ";");
         }
 
-        private void Expect(string type, string? value = null)
+        private void Expect(string type, string value = null)
         {
+            if (_position >= _tokens.Count)
+                throw new Exception("Unexpected end of input");
+
             var token = _tokens[_position];
             if (token.Type != type || (value != null && token.Value != value))
-                throw new Exception($"Expected {type} {value} but got {token.Type} {token.Value}");
+                throw new Exception($"Expected {type} '{value}' but got {token.Type} '{token.Value}'");
 
             _position++;
         }
