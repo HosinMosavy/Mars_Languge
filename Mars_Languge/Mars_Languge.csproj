@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="Main\Class_dll\cl_Lexer.cs" />
     <Compile Include="Main\Class_dll\cl_Parser.cs" />
+    <Compile Include="Main\Class_dll\cl_SyntaxHighlighter.cs" />
     <Compile Include="Main\Forms\frm_Writing_code_for_run.cs">
       <SubType>Form</SubType>
     </Compile>

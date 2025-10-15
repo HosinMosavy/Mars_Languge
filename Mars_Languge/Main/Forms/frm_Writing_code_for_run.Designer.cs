@@ -40,12 +40,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.pnl_conntrol_box = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.lbl_time = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btn_Minimize = new System.Windows.Forms.Button();
             this.btn_close = new System.Windows.Forms.Button();
-            this.lbl_time = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
             this.radSplitButton1 = new Telerik.WinControls.UI.RadSplitButton();
@@ -72,7 +72,7 @@
             this.txtCode.Name = "txtCode";
             this.txtCode.Size = new System.Drawing.Size(440, 269);
             this.txtCode.TabIndex = 0;
-            this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
+         //   this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
             // 
             // label1
             // 
@@ -84,7 +84,7 @@
             this.label1.Size = new System.Drawing.Size(80, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "input code";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+         //   this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnRun
             // 
@@ -182,15 +182,27 @@
             this.pnl_conntrol_box.TabIndex = 9;
             this.pnl_conntrol_box.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
-            // label5
+            // label6
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Calibri", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(19, 10);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 22);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Mars Language";
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(366, 11);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(62, 21);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Timer :";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lbl_time
+            // 
+            this.lbl_time.AutoSize = true;
+            this.lbl_time.Font = new System.Drawing.Font("Consolas", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_time.Location = new System.Drawing.Point(434, 10);
+            this.lbl_time.Name = "lbl_time";
+            this.lbl_time.Size = new System.Drawing.Size(60, 22);
+            this.lbl_time.TabIndex = 4;
+            this.lbl_time.Text = "00:00";
+            this.lbl_time.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // pictureBox1
             // 
@@ -201,6 +213,16 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Calibri", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(19, 10);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(125, 22);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Mars Language";
             // 
             // btn_Minimize
             // 
@@ -227,28 +249,6 @@
             this.btn_close.TabIndex = 0;
             this.btn_close.UseVisualStyleBackColor = true;
             this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
-            // 
-            // lbl_time
-            // 
-            this.lbl_time.AutoSize = true;
-            this.lbl_time.Font = new System.Drawing.Font("Consolas", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_time.Location = new System.Drawing.Point(434, 10);
-            this.lbl_time.Name = "lbl_time";
-            this.lbl_time.Size = new System.Drawing.Size(60, 22);
-            this.lbl_time.TabIndex = 4;
-            this.lbl_time.Text = "00:00";
-            this.lbl_time.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Variable Display", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(366, 11);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(62, 21);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Timer :";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // timer1
             // 
@@ -349,8 +349,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox txtCode;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.RichTextBox txtOutput;
@@ -374,5 +372,6 @@
         private Telerik.WinControls.UI.RadMenuItem btn_save_as;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
+        public System.Windows.Forms.TextBox txtCode;
     }
 }

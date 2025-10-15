@@ -1,6 +1,9 @@
 ﻿using Mars_Language.Main.Class_dll;
+using Mars_Languge.Main.Class_dll;
 using System;
+using System.Drawing;
 using System.Runtime.InteropServices;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
@@ -62,16 +65,15 @@ namespace Mars_Languge.Main.Forms
             }
         
 
-    }
-
+        }
+      //--------------------------------
         private void frm_Writing_code_for_run_Load(object sender, EventArgs e)
         {
             secondsElapsed = 0;
             timer1.Start(); // تایمر رو روشن کن
 
         }
-
-        
+       
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
         {
@@ -101,16 +103,9 @@ namespace Mars_Languge.Main.Forms
             lbl_time.Text = time.ToString(@"hh\:mm\:ss");
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
+    
 
-        }
-
-        private void txtCode_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
+      
 
         //------------------------------------------------------------------------------------
     }
