@@ -1,10 +1,10 @@
 ﻿using Mars_Language.Main.Class_dll;
-using Mars_Languge.Main.Class_dll;
 using System;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Runtime.CompilerServices.RuntimeHelpers;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 
@@ -66,11 +66,14 @@ namespace Mars_Languge.Main.Forms
         
 
         }
-      //--------------------------------
+        private SyntaxHighlighter highlighter;
+        //--------------------------------
         private void frm_Writing_code_for_run_Load(object sender, EventArgs e)
         {
             secondsElapsed = 0;
             timer1.Start(); // تایمر رو روشن کن
+            /////            
+            highlighter = new SyntaxHighlighter(txtCode);
 
         }
        

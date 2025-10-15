@@ -30,7 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_Writing_code_for_run));
-            this.txtCode = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRun = new System.Windows.Forms.Button();
             this.txtOutput = new System.Windows.Forms.RichTextBox();
@@ -54,6 +53,7 @@
             this.btn_save_as = new Telerik.WinControls.UI.RadMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.txtCode = new System.Windows.Forms.RichTextBox();
             this.pnl_conntrol_box.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -61,18 +61,6 @@
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // txtCode
-            // 
-            this.txtCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCode.ForeColor = System.Drawing.Color.White;
-            this.txtCode.Location = new System.Drawing.Point(12, 23);
-            this.txtCode.Multiline = true;
-            this.txtCode.Name = "txtCode";
-            this.txtCode.Size = new System.Drawing.Size(440, 269);
-            this.txtCode.TabIndex = 0;
-         //   this.txtCode.TextChanged += new System.EventHandler(this.txtCode_TextChanged);
             // 
             // label1
             // 
@@ -84,7 +72,6 @@
             this.label1.Size = new System.Drawing.Size(80, 19);
             this.label1.TabIndex = 1;
             this.label1.Text = "input code";
-         //   this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // btnRun
             // 
@@ -306,12 +293,22 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.txtCode);
+            this.panel3.Controls.Add(this.label1);
             this.panel3.Location = new System.Drawing.Point(7, 122);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(464, 295);
             this.panel3.TabIndex = 12;
+            // 
+            // txtCode
+            // 
+            this.txtCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.txtCode.ForeColor = System.Drawing.Color.White;
+            this.txtCode.Location = new System.Drawing.Point(14, 22);
+            this.txtCode.Name = "txtCode";
+            this.txtCode.Size = new System.Drawing.Size(440, 269);
+            this.txtCode.TabIndex = 2;
+            this.txtCode.Text = "";
             // 
             // frm_Writing_code_for_run
             // 
@@ -372,6 +369,6 @@
         private Telerik.WinControls.UI.RadMenuItem btn_save_as;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
-        public System.Windows.Forms.TextBox txtCode;
+        private System.Windows.Forms.RichTextBox txtCode;
     }
 }

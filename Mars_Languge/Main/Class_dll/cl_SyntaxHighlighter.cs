@@ -3,23 +3,17 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace Mars_Languge.Main.Class_dll
+namespace Mars_Language.Main.Class_dll
 {
-    internal class cl_SyntaxHighlighter
+    internal class SyntaxHighlighter
     {
         private RichTextBox _richTextBox;
-        private TextBox txtCode;
 
-        public cl_SyntaxHighlighter(RichTextBox richTextBox)
+        public SyntaxHighlighter(RichTextBox richTextBox)
         {
             _richTextBox = richTextBox;
             _richTextBox.TextChanged += RichTextBox_TextChanged;
             _richTextBox.Font = new Font("Consolas", 12); // فونت ثابت برای کد
-        }
-
-        public cl_SyntaxHighlighter(TextBox txtCode)
-        {
-            this.txtCode = txtCode;
         }
 
         private void RichTextBox_TextChanged(object sender, EventArgs e)
@@ -27,22 +21,20 @@ namespace Mars_Languge.Main.Class_dll
             int selStart = _richTextBox.SelectionStart;
             int selLength = _richTextBox.SelectionLength;
 
-            // جلوگیری از flicker
             _richTextBox.SuspendLayout();
 
-            // Reset رنگ‌ها
+            // ریست کردن رنگ‌ها
             _richTextBox.SelectAll();
             _richTextBox.SelectionColor = Color.Black;
 
-            string text = _richTextBox.Text;
+            // رنگی کردن کلمات
+            HighlightPattern(@"\b(int|string|float|bool)\b", Color.Orange); // نوع داده
+            HighlightPattern(@"\b(print)\b", Color.Purple);                 // توابع
+            HighlightPattern(@"\b(if|else|for|while|return)\b", Color.Blue); // کلمات کلیدی
+            HighlightPattern("\".*?\"", Color.Green);                        // رشته‌ها
+            HighlightPattern(@"//.*?$", Color.Gray, RegexOptions.Multiline); // کامنت‌ها
 
-            // Regex ها
-            HighlightPattern(@"\b(int|string|float|bool)\b", Color.Orange);       // نوع داده‌ها
-            HighlightPattern(@"\b(print)\b", Color.Purple);                       // توابع مهم
-            HighlightPattern(@"\b(if|else|for|while|return)\b", Color.Blue);     // کلمات کلیدی
-            HighlightPattern("\".*?\"", Color.Green);                              // رشته‌ها
-            HighlightPattern(@"//.*?$", Color.Gray, RegexOptions.Multiline);       // کامنت‌ها
-
+            // بازگرداندن مکان‌نما
             _richTextBox.SelectionStart = selStart;
             _richTextBox.SelectionLength = selLength;
             _richTextBox.SelectionColor = Color.Black;
