@@ -13,7 +13,7 @@ namespace Mars_Language.Main.Class_dll
         {
             _richTextBox = richTextBox;
             _richTextBox.TextChanged += RichTextBox_TextChanged;
-            _richTextBox.Font = new Font("Consolas", 12); // فونت ثابت برای کد
+            _richTextBox.Font = new Font("Microsoft Sans Serif", 14); // فونت ثابت برای کد
         }
 
         private void RichTextBox_TextChanged(object sender, EventArgs e)
@@ -25,19 +25,19 @@ namespace Mars_Language.Main.Class_dll
 
             // ریست کردن رنگ‌ها
             _richTextBox.SelectAll();
-            _richTextBox.SelectionColor = Color.Black;
+            _richTextBox.SelectionColor = Color.White;
 
             // رنگی کردن کلمات
             HighlightPattern(@"\b(int|string|float|bool)\b", Color.Orange); // نوع داده
-            HighlightPattern(@"\b(print)\b", Color.Purple);                 // توابع
-            HighlightPattern(@"\b(if|else|for|while|return)\b", Color.Blue); // کلمات کلیدی
+            HighlightPattern(@"\b(print)\b", Color.MediumPurple);                 // توابع
+            HighlightPattern(@"\b(if|else|for|while|return)\b", Color.SkyBlue); // کلمات کلیدی
             HighlightPattern("\".*?\"", Color.Green);                        // رشته‌ها
-            HighlightPattern(@"//.*?$", Color.Gray, RegexOptions.Multiline); // کامنت‌ها
+            HighlightPattern(@"//.*?$", Color.Silver, RegexOptions.Multiline); // کامنت‌ها
 
             // بازگرداندن مکان‌نما
             _richTextBox.SelectionStart = selStart;
             _richTextBox.SelectionLength = selLength;
-            _richTextBox.SelectionColor = Color.Black;
+            _richTextBox.SelectionColor = Color.White;
 
             _richTextBox.ResumeLayout();
         }
