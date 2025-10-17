@@ -54,6 +54,7 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.txtCode = new System.Windows.Forms.RichTextBox();
+            this.lstSuggest = new System.Windows.Forms.ListBox();
             this.pnl_conntrol_box.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel1.SuspendLayout();
@@ -111,7 +112,7 @@
             // 
             this.txt_lexser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txt_lexser.ForeColor = System.Drawing.Color.White;
-            this.txt_lexser.Location = new System.Drawing.Point(625, 534);
+            this.txt_lexser.Location = new System.Drawing.Point(657, 464);
             this.txt_lexser.Name = "txt_lexser";
             this.txt_lexser.Size = new System.Drawing.Size(190, 103);
             this.txt_lexser.TabIndex = 5;
@@ -123,10 +124,10 @@
             this.txtError.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.txtError.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtError.ForeColor = System.Drawing.Color.LightCoral;
-            this.txtError.Location = new System.Drawing.Point(478, 145);
+            this.txtError.Location = new System.Drawing.Point(477, 144);
             this.txtError.Name = "txtError";
             this.txtError.ReadOnly = true;
-            this.txtError.Size = new System.Drawing.Size(370, 290);
+            this.txtError.Size = new System.Drawing.Size(370, 269);
             this.txtError.TabIndex = 6;
             this.txtError.Text = "";
             // 
@@ -135,7 +136,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(622, 514);
+            this.label3.Location = new System.Drawing.Point(733, 607);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(51, 17);
             this.label3.TabIndex = 7;
@@ -147,7 +148,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI Variable Display", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(477, 122);
+            this.label4.Location = new System.Drawing.Point(477, 124);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(63, 17);
             this.label4.TabIndex = 8;
@@ -165,7 +166,7 @@
             this.pnl_conntrol_box.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnl_conntrol_box.Location = new System.Drawing.Point(0, 0);
             this.pnl_conntrol_box.Name = "pnl_conntrol_box";
-            this.pnl_conntrol_box.Size = new System.Drawing.Size(860, 42);
+            this.pnl_conntrol_box.Size = new System.Drawing.Size(866, 42);
             this.pnl_conntrol_box.TabIndex = 9;
             this.pnl_conntrol_box.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
             // 
@@ -250,7 +251,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 42);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(860, 55);
+            this.panel1.Size = new System.Drawing.Size(866, 55);
             this.panel1.TabIndex = 10;
             // 
             // radSplitButton1
@@ -310,14 +311,41 @@
             this.txtCode.Size = new System.Drawing.Size(440, 269);
             this.txtCode.TabIndex = 2;
             this.txtCode.Text = "";
+            this.txtCode.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCode_KeyDown);
+            this.txtCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCode_KeyPress);
+            this.txtCode.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCode_KeyUp);
+            // 
+            // lstSuggest
+            // 
+            this.lstSuggest.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lstSuggest.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstSuggest.ForeColor = System.Drawing.Color.AntiqueWhite;
+            this.lstSuggest.FormattingEnabled = true;
+            this.lstSuggest.ItemHeight = 16;
+            this.lstSuggest.Items.AddRange(new object[] {
+            "print",
+            "int",
+            "string",
+            "float",
+            "bool",
+            "if",
+            "for",
+            "while"});
+            this.lstSuggest.Location = new System.Drawing.Point(492, 432);
+            this.lstSuggest.Name = "lstSuggest";
+            this.lstSuggest.Size = new System.Drawing.Size(112, 228);
+            this.lstSuggest.TabIndex = 13;
+            this.lstSuggest.Click += new System.EventHandler(this.lstSuggest_Click);
+            this.lstSuggest.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lstSuggest_KeyDown);
             // 
             // frm_Writing_code_for_run
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(860, 700);
+            this.ClientSize = new System.Drawing.Size(866, 700);
             this.ControlBox = false;
+            this.Controls.Add(this.lstSuggest);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -371,5 +399,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.RichTextBox txtCode;
+        private System.Windows.Forms.ListBox lstSuggest;
     }
 }

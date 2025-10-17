@@ -5,10 +5,10 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Mars_Languge")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Mars Language")]
+[assembly: AssemblyDescription("this Language created by c# WinForm")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Mars Code")]
 [assembly: AssemblyProduct("Mars_Languge")]
 [assembly: AssemblyCopyright("Copyright ©  2025")]
 [assembly: AssemblyTrademark("")]

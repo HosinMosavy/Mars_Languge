@@ -33,6 +33,14 @@ namespace Mars_Language.Main.Class_dll
             HighlightPattern(@"\b(if|else|for|while|return)\b", Color.SkyBlue); // کلمات کلیدی
             HighlightPattern("\".*?\"", Color.Green);                        // رشته‌ها
             HighlightPattern(@"//.*?$", Color.Silver, RegexOptions.Multiline); // کامنت‌ها
+            HighlightPattern(@"(==|!=|<=|>=|<|>|;)", Color.HotPink); // عملگرهای مقایسه‌ای
+            HighlightPattern(@"(&&|\|\|)", Color.SaddleBrown);
+            HighlightPattern(@"[()]", Color.Red);
+            HighlightPattern(@"[{}]", Color.Red);
+            HighlightPattern(@"=", Color.Green);
+
+
+
 
             // بازگرداندن مکان‌نما
             _richTextBox.SelectionStart = selStart;
