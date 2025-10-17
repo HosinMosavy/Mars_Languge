@@ -12,7 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace Mars_Languge.Main.Forms
 {
-    // ایمپورت توابع ویندوز
+   
 
 
     public partial class frm_Writing_code_for_run : Form
@@ -25,8 +25,60 @@ namespace Mars_Languge.Main.Forms
             lstSuggest.KeyDown += lstSuggest_KeyDown;
             lstSuggest.Click += lstSuggest_Click;
         }
+
+        //---------------------------------------------------------------------------------------
+        //-------------------------------------internal class------------------------------------
+        //---------------------------------------------------------------------------------------
+        private void InsertSuggestion()
+        {
+            if (lstSuggest.SelectedItem == null) return;
+            string selected = lstSuggest.SelectedItem.ToString();
+            string word = GetCurrentWord();
+
+            int pos = txtCode.SelectionStart;
+            txtCode.Text = txtCode.Text.Remove(pos - word.Length, word.Length);
+            txtCode.Text = txtCode.Text.Insert(pos - word.Length, selected);
+            txtCode.SelectionStart = pos - word.Length + selected.Length;
+            lstSuggest.Visible = false;
+        }
+
+        //--------------------------------------
+
+        private string GetCurrentWord()
+        {
+            int pos = txtCode.SelectionStart;
+            int start = pos - 1;
+            while (start >= 0 && (char.IsLetterOrDigit(txtCode.Text[start]) || txtCode.Text[start] == '_'))
+                start--;
+            return txtCode.Text.Substring(start + 1, pos - (start + 1));
+        }
+
+        //--------------------------------------
+
+        private void PositionListBox()
+        {
+            var point = txtCode.GetPositionFromCharIndex(txtCode.SelectionStart);
+            point.Y += (int)Math.Ceiling(txtCode.Font.GetHeight());
+            lstSuggest.Location = new Point(point.X + txtCode.Left, point.Y + txtCode.Top);
+        }
+        //---------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+        ////Introducing the necessary classes //  معرفی کلاس های لازم------------------------------
         List<string> suggestions = new List<string> { "print", "private", "protected", "int", "string", "float", "if", "else", "for", "while" };
-        //--------------control panell-------------------------------------------
+        cl_Lexer Lexer = new cl_Lexer();
+        private int secondsElapsed = 0; // تعداد ثانیه‌های گذشته
+        //---------------------------------------------------------------------------------------
+        //--------------control panell-----------------------------------------------------------
         // ایمپورت توابع ویندوز
         public const int WM_NCLBUTTONDOWN = 0xA1;
         public const int HTCAPTION = 0x2;
@@ -36,14 +88,48 @@ namespace Mars_Languge.Main.Forms
 
         [DllImport("User32.dll")]
         public static extern int SendMessage(IntPtr hWnd, int Msg, int wParam, int lParam);
-        //---------------------------------------------------------
+        //---------------------------------------------------------------------------------------
+        //------------------------------------form event /رویداد های فرم-------------------------
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
 
-        //Introducing the necessary classes //  معرفی کلاس های لازم
-        cl_Lexer Lexer = new cl_Lexer();
-        private int secondsElapsed = 0; // تعداد ثانیه‌های گذشته
-        //-------------------------------------------------------
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
 
-        //button Run project/languge----دکمه اجرا پروژه/زبان----------------------------------
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            secondsElapsed++;
+
+            // تبدیل ثانیه به hh:mm:ss
+            TimeSpan time = TimeSpan.FromSeconds(secondsElapsed);
+            lbl_time.Text = time.ToString(@"hh\:mm\:ss");
+        }
+        //---------------------------------------------------------------------------------------
+        //--------------------------------------فرم لود------------------------------------------
+        private void frm_Writing_code_for_run_Load(object sender, EventArgs e)
+        {
+            secondsElapsed = 0;
+            timer1.Start(); // تایمر رو روشن کن
+            /////            
+            highlighter = new SyntaxHighlighter(txtCode);
+
+        }
+        //---------------------------------------------------------------------------------------
+        //---------------------------------------Control Box-------------------------------------
+        private void panel1_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                ReleaseCapture();
+                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
+            }
+        }
+        //---------------------------------------------------------------------------------------
+        //button Run project/languge----دکمه اجرا پروژه/زبان--------------------------------------
         private void btnRun_Click(object sender, EventArgs e)
         {
             txtError.Clear();  // پاک کردن خطاهای قبلی
@@ -72,46 +158,11 @@ namespace Mars_Languge.Main.Forms
 
 
         }
+        //---------------------------------------------------------------------------------------
+        //---------------------------------------اجرای کلس رنگی کردن متن ها----------------------
         private SyntaxHighlighter highlighter;
-        //--------------------------------
-        private void frm_Writing_code_for_run_Load(object sender, EventArgs e)
-        {
-            secondsElapsed = 0;
-            timer1.Start(); // تایمر رو روشن کن
-            /////            
-            highlighter = new SyntaxHighlighter(txtCode);
-
-        }
-
-
-        private void panel1_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                ReleaseCapture();
-                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HTCAPTION, 0);
-            }
-        }
-
-        private void btn_close_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            secondsElapsed++;
-
-            // تبدیل ثانیه به hh:mm:ss
-            TimeSpan time = TimeSpan.FromSeconds(secondsElapsed);
-            lbl_time.Text = time.ToString(@"hh\:mm\:ss");
-        }
-
+        //---------------------------------------------------------------------------------------
+        //---------------------------------------txtCode_Event------------------------------------------------
         private void txtCode_KeyPress(object sender, KeyPressEventArgs e)
         {
             // اگه کاربر پرانتز باز زد
@@ -141,7 +192,7 @@ namespace Mars_Languge.Main.Forms
                 e.Handled = true;
             }
         }
-
+        //--------------------------------------
         private void txtCode_KeyUp(object sender, KeyEventArgs e)
         {
             // فقط وقتی کاربر حروف تایپ می‌کنه
@@ -167,54 +218,9 @@ namespace Mars_Languge.Main.Forms
                 else
                     lstSuggest.Visible = false;
             }
-
-
-
-
-
-            //------------------------------------------------------------------------------------
         }
 
-        private void lstSuggest_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Enter)
-            {
-                InsertSuggestion();
-            }
-        }
-
-        private void lstSuggest_Click(object sender, EventArgs e)
-        {
-            InsertSuggestion();
-        }
-        private void InsertSuggestion()
-        {
-            if (lstSuggest.SelectedItem == null) return;
-            string selected = lstSuggest.SelectedItem.ToString();
-            string word = GetCurrentWord();
-
-            int pos = txtCode.SelectionStart;
-            txtCode.Text = txtCode.Text.Remove(pos - word.Length, word.Length);
-            txtCode.Text = txtCode.Text.Insert(pos - word.Length, selected);
-            txtCode.SelectionStart = pos - word.Length + selected.Length;
-            lstSuggest.Visible = false;
-        }
-
-        private string GetCurrentWord()
-        {
-            int pos = txtCode.SelectionStart;
-            int start = pos - 1;
-            while (start >= 0 && (char.IsLetterOrDigit(txtCode.Text[start]) || txtCode.Text[start] == '_'))
-                start--;
-            return txtCode.Text.Substring(start + 1, pos - (start + 1));
-        }
-
-        private void PositionListBox()
-        {
-            var point = txtCode.GetPositionFromCharIndex(txtCode.SelectionStart);
-            point.Y += (int)Math.Ceiling(txtCode.Font.GetHeight());
-            lstSuggest.Location = new Point(point.X + txtCode.Left, point.Y + txtCode.Top);
-        }
+        //--------------------------------------
 
         private void txtCode_KeyDown(object sender, KeyEventArgs e)
         {
@@ -262,5 +268,27 @@ namespace Mars_Languge.Main.Forms
                 }
             }
         }
+        //------------------------------------------------------------------------------------
+        //---------------------------Suggest List event---------------------------------------
+
+        private void lstSuggest_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                InsertSuggestion();
+            }
+        }
+
+        //--------------------------------------
+
+        private void lstSuggest_Click(object sender, EventArgs e)
+        {
+            InsertSuggestion();
+        }
+        //---------------------------------------------------------------------------------------
+        //---------------------------------------------------------------------------------------
+      
+
+       
     }
 }
